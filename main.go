@@ -15,13 +15,15 @@ func main() {
 			log.Fatalf("WriteString: %s", err)
 		}
 
+		// Lexer is our adapter; NewScanner() produces the flexgo lexer
 		var lexer = Lexer{
 			lexer: *NewScanner(),
 		}
-		lexer.lexer.Filename = "<stdin>"
 
+		// xxParse comes from the parser which uses the lexer adapter.
 		xxParse(&lexer)
 
+		// After Ctrl + D, the result will be printed.
 		fmt.Printf("Result: %f\n", result)
 	}
 }
