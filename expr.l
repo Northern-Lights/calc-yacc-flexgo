@@ -39,12 +39,9 @@ var err error // Actually, this is global for lexer action access.
 
 %}
 
-option prefix zz
-
 %%
 
 [0-9]+     {
-              // yylval.val = atol(yytext);
               yylval.val, err = strconv.ParseFloat(string(yytext), 64)
               if err != nil {
                 fmt.Println("Number error:", err)
